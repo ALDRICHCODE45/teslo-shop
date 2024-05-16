@@ -1,8 +1,10 @@
 "use client";
+import { ProductImage } from "@/components/product/product-image/ProductImage";
 import { Product } from "@/interfaces";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, type ReactElement } from "react";
+import { redirect } from "next/navigation";
+import { useEffect, useState, type ReactElement } from "react";
 
 export interface ProductGridItemProps {
   product: Product;
@@ -16,14 +18,15 @@ export function ProductGridItem({
   return (
     <div className="rounded-md overflow-hidden fade-in ">
       <Link href={`/product/${product.slug}`}>
-        <Image
-          src={`/products/${displayImage}`}
+        <ProductImage
+          src={product.images[0]}
           alt={product.title}
           className="w-full object-cover rounded"
           width={500}
           height={500}
           onMouseEnter={() => setDisplayImage(product.images[1])}
           onMouseLeave={() => setDisplayImage(product.images[0])}
+          displayImage={displayImage}
         />
       </Link>
       <div className="p-4 flex flex-col">

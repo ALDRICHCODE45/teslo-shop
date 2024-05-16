@@ -21,6 +21,11 @@ export interface CartProduct {
   size: Size;
   image: string;
 }
+export interface ProductImage {
+  id: number;
+  url: string;
+  productId: string;
+}
 
 export type ValidCategory = "men" | "women" | "kid" | "unisex";
 

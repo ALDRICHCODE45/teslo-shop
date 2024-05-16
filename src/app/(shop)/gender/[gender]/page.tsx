@@ -1,4 +1,3 @@
-export const revalidate = 60;
 import { productPaginationWithImages } from "@/actions";
 
 import { Pagination, ProductsGrid, Title } from "@/components";
@@ -35,7 +34,7 @@ export default async function GenderPage({ params, searchParams }: Props) {
     gender: gender as Gender,
   });
 
-  if (!products.length) {
+  if (products.length === 0) {
     redirect("/");
   }
 

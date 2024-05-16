@@ -5,7 +5,7 @@ import { type ReactElement } from "react";
 
 export interface PageNotFoundProps {}
 
-export function PageNotFound(props: PageNotFoundProps): ReactElement {
+export function PageNotFound({}: PageNotFoundProps): ReactElement {
   return (
     <div className="flex flex-col-reverse md:flex-row h-[800px] w-full justify-center items-center align-middle ">
       <div className="text-center px-5 mx-5">

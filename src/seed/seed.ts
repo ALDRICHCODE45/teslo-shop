@@ -42,8 +42,16 @@ export const initialData: SeedData = {
     {
       email: "desinbakan@gmail.com",
       name: "bryan",
-      password: hashSync("123456"),
+      password: hashSync("aldrich1"),
       role: "user",
+      image: "https://avatars.githubusercontent.com/u/104176572?v=4",
+    },
+    {
+      email: "aldrich.coder@gmail.com",
+      name: "Aldrich",
+      password: hashSync("123456"),
+      role: "admin",
+      image: "https://avatars.githubusercontent.com/u/104176572?v=4",
     },
   ],
   categories: ["Shirts", "Pants", "Hoodies", "Hats"],

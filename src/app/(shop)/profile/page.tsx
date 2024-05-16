@@ -1,5 +1,6 @@
 import { auth } from "@/auth.config";
 import { redirect } from "next/navigation";
+import { EditProfileForm } from "./ui/EditProfileForm";
 
 export interface ProfilepageProps {}
 
@@ -10,9 +11,11 @@ export default async function Profilepage({}: ProfilepageProps) {
   }
   return (
     <>
-      <div className="">
-        <pre>{JSON.stringify(session?.user, null, 2)}</pre>
-      </div>
+      <EditProfileForm
+        email={session.user.email}
+        name={session.user.name}
+        userId={session.user.id}
+      />
     </>
   );
 }

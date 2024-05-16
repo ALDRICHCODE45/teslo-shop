@@ -4,15 +4,19 @@ import { useEffect, useState, type ReactElement } from "react";
 
 export interface OrderSummaryProps {}
 
-export function OrderSummary(props: OrderSummaryProps): ReactElement {
+export function OrderSummary({}: OrderSummaryProps): ReactElement {
   const [loaded, setLoaded] = useState(false);
+
   const { itemsIncart, subTotal, tax, total } = useCartStore((state) =>
     state.getSummaryInformation()
   );
+
   useEffect(() => {
     setLoaded(true);
-  }, []);
+  }, [loaded, setLoaded]);
+
   if (!loaded) return <p>loading...</p>;
+
   return (
     <>
       <div className="grid grid-cols-2 ">

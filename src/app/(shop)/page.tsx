@@ -1,5 +1,3 @@
-export const revalidate = 60; // 60 segundos
-
 import { redirect } from "next/navigation";
 
 import { productPaginationWithImages } from "@/actions";
@@ -14,8 +12,7 @@ interface Props {
 export default async function Home({ searchParams }: Props) {
   const page = searchParams.page ? parseInt(searchParams.page) : 1;
 
-  const { products, currentPage, totalPages } =
-    await productPaginationWithImages({ page });
+  const { products, totalPages } = await productPaginationWithImages({ page });
 
   if (products.length === 0) {
     redirect("/");

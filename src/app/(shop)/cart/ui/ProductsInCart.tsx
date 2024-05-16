@@ -1,8 +1,9 @@
 "use client";
-import { QuantitySelector } from "@/components";
+import { ProductImage, QuantitySelector } from "@/components";
 import { useCartStore } from "@/store/cart-store/cart-store";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { useEffect, useState, type ReactElement } from "react";
 
 export interface ProductsInCartProps {}
@@ -10,6 +11,7 @@ export interface ProductsInCartProps {}
 export function ProductsInCart(props: ProductsInCartProps): ReactElement {
   const productsIncart = useCartStore((state) => state.cart);
   const removeProductInCart = useCartStore((state) => state.removeProduct);
+
   const updateProductQuantity = useCartStore(
     (state) => state.updateProductQuantity
   );
@@ -17,7 +19,11 @@ export function ProductsInCart(props: ProductsInCartProps): ReactElement {
 
   useEffect(() => {
     setLoaded(true);
-  });
+  }, [loaded, setLoaded]);
+
+  useEffect(() => {
+    if (!productsIncart.length) redirect("/empty");
+  }, [productsIncart]);
 
   if (!loaded) {
     return <p>loading...</p>;
@@ -26,9 +32,9 @@ export function ProductsInCart(props: ProductsInCartProps): ReactElement {
     <>
       {productsIncart.map((product) => (
         <div className="flex mb-5" key={`${product.slug}-${product.size}`}>
-          <Image
+          <ProductImage
             style={{ width: "120px", height: "120px" }}
-            src={`/products/${product.image}`}
+            src={product.image}
             alt=""
             width={100}
             height={100}

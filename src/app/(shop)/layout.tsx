@@ -8,8 +8,9 @@ export interface ShopLayoutProps {
 export default function ShopLayout({ children }: ShopLayoutProps) {
   return (
     <main className="min-h-screen">
-      <Sidebar />
+      <ToasterProvider />
       <TopMenu />
+      <Sidebar />
       <div className="px-0 sm:px-10">{children}</div>
       <Footer />
     </main>

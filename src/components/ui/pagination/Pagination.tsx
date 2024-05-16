@@ -1,5 +1,5 @@
 "use client";
-import { generatePaginationNumbers } from "@/utils/generatePaginationNumbers";
+import { generatePaginationNumbers } from "@/utils";
 import clsx from "clsx";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";

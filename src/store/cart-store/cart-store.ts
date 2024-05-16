@@ -14,12 +14,17 @@ interface CartState {
     total: number;
     itemsIncart: number;
   };
+  clearCart: () => void;
 }
 
 export const useCartStore = create<CartState>()(
   persist(
     (set, get) => ({
       cart: [],
+      clearCart: () => {
+        set({ cart: [] });
+      },
+
       getTotalItems: () => {
         const { cart } = get();
         return cart.reduce((total, item) => total + item.quantity, 0);

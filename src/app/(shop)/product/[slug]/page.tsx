@@ -1,5 +1,3 @@
-export const revalidate = 604800;
-
 import { getProductBySlug } from "@/actions";
 import { ProductSlideShowMobile } from "@/components";
 import { ProductSlideShow } from "@/components";
@@ -77,7 +75,7 @@ export default async function Product({ params }: pageProps) {
             >
               {product.title}
             </h1>
-            <p className="text-lg mb-5 ">{product.price}</p>
+            <p className="text-lg mb-5 ">${product.price}</p>
             {/*Selector de tallas*/}
             <AddToCart product={product} />
             {/*Description*/}
